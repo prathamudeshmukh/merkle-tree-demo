@@ -39,6 +39,7 @@ body {
   background-color: #ffffff;
 }
 * {
+    font-family: 'Inconsolata', monospace;
     box-sizing: border-box;
   }
   .tree-container{
