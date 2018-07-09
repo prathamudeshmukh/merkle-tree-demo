@@ -2,7 +2,10 @@
 //const _    = require('./node_modules/underscore/underscore.js');
 
 function constructTree(listOfNodes) {
-  if(listOfNodes.length === 1) return listOfNodes;
+  if(listOfNodes.length === 1) {
+    listOfNodes[0].isRoot = true;
+    return listOfNodes;
+  }
   listOfNodes = _.chunk(listOfNodes, 2);
   var allParentNodes = [];
   for (var i in listOfNodes) {
@@ -36,11 +39,15 @@ function Node (hash, leftNode, rightNode) {
     this.hash = hash;
     this.leftNode = leftNode;
     this.rightNode = rightNode;
+    this.isRoot = false;
 
     this.toString = function() {
       if(this.leftNode || this.rightNode) {
         var returnObj = {
-          text: {name: this.hash.substr(0, 6)},
+          text: {
+            name: this.hash.substr(0, 6)
+          },
+          HTMLclass: this.isRoot ? "root-node" : "parent-node",
           children: []
         };
 
@@ -49,7 +56,10 @@ function Node (hash, leftNode, rightNode) {
         return returnObj;
       }
       return {
-        text: {name: this.hash.substr(0, 6)}
+        text: {
+          name: this.hash.substr(0, 6)
+        },
+        HTMLclass:"leaf-node"
       };
     }
 }
