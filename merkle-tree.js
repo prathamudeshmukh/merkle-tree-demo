@@ -7,7 +7,12 @@ function initConstructTree(){
   var chart_config = {
     	chart: {
     		container: "#merkle-tree",
-        connectors: {"type":"step"}
+        connectors: {
+          "type":"step",
+          "style": {
+            "stroke-width": 2
+          }
+        }
     	},
     	nodeStructure: nodeTreeStructure
   };
