@@ -32,3 +32,20 @@
 .node.root-node {
   background-color: #ff807f;
 }
+
+* {
+    box-sizing: border-box;
+  }
+  .tree-container{
+    width: 70%;
+    float: left;
+    position: relative;
+  }
+  .controls {
+    width: 30%;
+    float: left;
+    position: relative;
+  }
+  .controls > ul {
+      padding-top: 80px
+  }
