@@ -1,5 +1,5 @@
-const sha1 = require('sha1');
-const _    = require('underscore');
+//const sha1 = require('./node_modules/sha1/sha1.js');
+//const _    = require('./node_modules/underscore/underscore.js');
 
 function constructTree(listOfNodes) {
   if(listOfNodes.length === 1) return listOfNodes;
@@ -31,56 +31,30 @@ function convertToNodeList(dataChunkList) {
   }
   return nodeList;
 }
-/**
-{
-  "name": "Top Level",
-  "parent": "null",
-  "children": [
-    {
-      "name": "Level 2: A",
-      "parent": "Top Level",
-      "children": [
-        {
-          "name": "Son of A",
-          "parent": "Level 2: A"
-        },
-        {
-          "name": "Daughter of A",
-          "parent": "Level 2: A"
-        }
-      ]
-    },
-    {
-      "name": "Level 2: B",
-      "parent": "Top Level"
-    }
-  ]
-}
-**/
+
 function Node (hash, leftNode, rightNode) {
     this.hash = hash;
     this.leftNode = leftNode;
     this.rightNode = rightNode;
 
     this.toString = function() {
-        console.log("***");
       if(this.leftNode || this.rightNode) {
-        return {
-          name: this.hash.substr(0, 6),
-          parent: "null",
-          children: [
-            this.leftNode ? this.leftNode.toString() : "",
-            this.rightNode ? this.rightNode.toString() : ""
-          ]
+        var returnObj = {
+          text: {name: this.hash.substr(0, 6)},
+          children: []
         };
+
+        if (this.leftNode) returnObj.children.push(this.leftNode.toString());
+        if (this.rightNode) returnObj.children.push(this.rightNode.toString());
+        return returnObj;
       }
       return {
-        name: this.hash.substr(0, 6),
-        parent: "null",
+        text: {name: this.hash.substr(0, 6)}
       };
     }
 }
+
 ///////////////////Test/////////////////////////////////////////////////////////
-var testData = ['a','b','c','d','e','f','g','h'];
-var nodeList = convertToNodeList(testData);
-console.log(JSON.stringify(constructTree(nodeList)[0].toString()));
+// var testData = ['a','b','c','d','e','f','g','h'];
+// var nodeList = convertToNodeList(testData);
+// console.log(JSON.stringify(constructTree(nodeList)[0].toString()));
