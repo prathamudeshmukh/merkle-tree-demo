@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Merkle Tree Demo</title>
+    <style>
+
+  </style>
+    <link rel="stylesheet" href="tree-viz/Treant.css" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha1/0.6.0/sha1.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <script src="tree-viz/vendor/raphael.js" type="text/javascript"></script>
+    <script src="tree-viz/Treant.js" type="text/javascript"></script>
+    <script src="tree-construct.js" type="text/javascript"></script>
+    <script src="merkle-tree.js" type="text/javascript"></script>
+  </head>
+
+  <body>
+    <div class='tree-container'>
+      <div id="merkle-tree" style="width:1000px; height: 660px"> </div>
+  </div>
+  <div class='controls'>
+    <ul style='list-style-type: none;'>
+      <li><textarea cols='50' rows='20' id='data'>Merkle trees are used in distributed and peer to peer systems for data verification. Suppose you want to check if a file is same everywhere and nobody has tampered with its contents. For doing this, we can use merkle trees. Instead of sending the entire file from point A to point B and then comparing it with a copy of it, we can send the hash of the file from A to B. This hash is then checked against the root of the merkle tree. If the hashes matches then we can be sure that the data in the file was not modified in any way.</textarea></li>
+    <li><input type='text' value='10' id='chunkSize' size='4'></li>
+    <li><button onclick='initConstructTree()'>Construct Tree</button></li>
+  </ul>
+  </div>
+
+  </body>
+
+</html>
