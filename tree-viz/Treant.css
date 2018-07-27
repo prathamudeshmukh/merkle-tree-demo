@@ -43,9 +43,11 @@ body {
     box-sizing: border-box;
   }
   .tree-container{
-    width: 70%;
+    width: 100%;
     float: left;
     position: relative;
+    border: solid black;
+    border-size: 0.5px
   }
   .controls {
     width: 30%;
@@ -53,7 +55,7 @@ body {
     position: relative;
   }
   .controls > ul {
-      padding-top: 80px
+      padding-top: 20px
   }
 
   .controls > textarea {
